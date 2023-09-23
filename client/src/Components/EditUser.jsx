@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { React, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import './Signup.css'
+import { useLocation, useNavigate , Link } from 'react-router-dom'
+
 
 export default function EditUser() {
 
@@ -69,17 +71,38 @@ export default function EditUser() {
         <div className="row">
           <div className="col-12 d-flex justify-content-center align-items-center">
 
-            <form action="" className='col-5' onSubmit={handleSubmit}>
-              <h4 className='text-primary '>Update User Detail</h4>
+            <form className="form" onSubmit={handleSubmit}>
+              <p className="title">Update User</p>
+              <p className="message">Update now and get full access to our app. </p>
+              <div className="flex">
+                <label>
+                  <input value={name} onChange={e => handleChange(e)} required="" placeholder="" type="text" className="input" name='fullName' />
+                  <span>FullName</span>
+                </label>
 
-              <input value={name} onChange={e => handleChange(e)} type="text" placeholder='Enter Full Name' name='fullName' className='form-control mb-2' />
-              <input value={email} onChange={e => handleChange(e)} type="email" placeholder='Enter Email' name='email' className='form-control mb-2' />
-              <input value={age} onChange={e => handleChange(e)} type="text" placeholder='Enter Age' name='age' className='form-control mb-2' />
-              <input value={password} onChange={e => handleChange(e)} type="password" placeholder='Enter Password' name='password' className='form-control mb-2' />
-              <input value={address} onChange={e => handleChange(e)} type="text" placeholder='Enter Address' name='address' className='form-control mb-2' />
-              <input onChange={e => handleChange(e)} type="submit" value="Update User" className='btn btn-secondary mb-2 w-100' />
+                <label>
+                  <input value={age} onChange={e => handleChange(e)} required="" placeholder="" type="text" className="input" name='age' />
+                  <span>Age</span>
+                </label>
+              </div>
 
+              <label>
+                <input value={email} onChange={e => handleChange(e)} required="" placeholder="" type="email" className="input" name='email' />
+                <span>Email</span>
+              </label>
+
+              <label>
+                <input value={password} onChange={e => handleChange(e)} required="" placeholder="" type="password" className="input" name='password' />
+                <span>Password</span>
+              </label>
+              <label>
+                <input value={address} onChange={e => handleChange(e)} required="" placeholder="" type="password" className="input" name='address' />
+                <span>Address</span>
+              </label>
+              <input type='submit' value="Update" className="submit" />
+              <p className="signin">Already have an acount ? <Link to="/login">Signin</Link> </p>
             </form>
+
           </div>
         </div>
       </div>

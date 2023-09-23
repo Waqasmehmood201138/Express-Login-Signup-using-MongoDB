@@ -1,7 +1,11 @@
 import { React, useState } from 'react'
 import axios from 'axios'
+import { Link, useNavigate } from 'react-router-dom'
+import './Signup.css'
 
 export default function Signup() {
+
+    const navigate = useNavigate()
 
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
@@ -44,7 +48,11 @@ export default function Signup() {
                 address
             })
 
-            alert(`${res} Signed Up .....`)
+            if(res.data){
+                navigate('/database')
+                alert(`${res.data} Signed Up .....`)
+            }
+
         } catch (error) {
             console.log(error)
         }
@@ -57,17 +65,39 @@ export default function Signup() {
                     <div className="col-12 d-flex justify-content-center align-items-center">
 
 
-                        <form action="" className='col-5' onSubmit={handleSubmit}>
-                            <h4 className='text-primary '>Signup Page</h4>
 
-                            <input value={name} onChange={e => handleChange(e)} type="text" placeholder='Enter Full Name' name='fullName' className='form-control mb-2' />
-                            <input value={email} onChange={e => handleChange(e)} type="email" placeholder='Enter Email' name='email' className='form-control mb-2' />
-                            <input value={age} onChange={e => handleChange(e)} type="text" placeholder='Enter Age' name='age' className='form-control mb-2' />
-                            <input value={password} onChange={e => handleChange(e)} type="password" placeholder='Enter Password' name='password' className='form-control mb-2' />
-                            <input value={address} onChange={e => handleChange(e)} type="text" placeholder='Enter Address' name='address' className='form-control mb-2' />
-                            <input type="submit" value="Sign me up" className='btn btn-secondary mb-2 w-100' />
+                        <form className="form" onSubmit={handleSubmit}>
+                            <p className="title">Register </p>
+                            <p className="message">Signup now and get full access to our app. </p>
+                            <div className="flex">
+                                <label>
+                                    <input value={name} onChange={e => handleChange(e)} required="" placeholder="" type="text" className="input" name='fullName'/>
+                                        <span>FullName</span>
+                                </label>
 
+                                <label>
+                                    <input value={age} onChange={e => handleChange(e)}  required="" placeholder="" type="text" className="input" name='age'/>
+                                        <span>Age</span>
+                                </label>
+                            </div>
+
+                            <label>
+                                <input value={email} onChange={e => handleChange(e)} required="" placeholder="" type="email" className="input" name='email'/>
+                                    <span>Email</span>
+                            </label>
+
+                            <label>
+                                <input value={password} onChange={e => handleChange(e)} required="" placeholder="" type="password" className="input" name='password'/>
+                                <span>Password</span>
+                            </label>
+                            <label>
+                                <input value={address} onChange={e => handleChange(e)} required="" placeholder="" type="password" className="input" name='address'/>
+                                    <span>Address</span>
+                            </label>
+                            <input type='submit' value="Sign me up" className="submit"/>
+                            <p className="signin">Already have an acount ? <Link to="/login">Signin</Link> </p>
                         </form>
+
                     </div>
                 </div>
             </div>

@@ -44,7 +44,7 @@ userRoute.post('/login', async (req, res) => {
         if (check[0].email != email || check[0].password != password) {
             res.send("Invalid Credential")
         } else {
-            res.send(`${check[0].name} logged In`)
+            res.send(`${check[0].name} logged In Successfully ....`)
         }
 
     } catch (err) {
