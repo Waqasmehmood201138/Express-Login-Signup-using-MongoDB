@@ -96,11 +96,11 @@ export default function EditUser() {
                 <span>Password</span>
               </label>
               <label>
-                <input value={address} onChange={e => handleChange(e)} required="" placeholder="" type="password" className="input" name='address' />
+                <input value={address} onChange={e => handleChange(e)} required="" placeholder="" type="text" className="input" name='address' />
                 <span>Address</span>
               </label>
               <input type='submit' value="Update" className="submit" />
-              <p className="signin">Already have an acount ? <Link to="/login">Signin</Link> </p>
+              <p className="signin">Don't want to Update ? <Link to="/database">records</Link> </p>
             </form>
 
           </div>

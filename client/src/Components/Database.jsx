@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 import Loader from "./Loader"
 import './Loader.css'
-import './Database.css'
+// import './Database.css'
 
 
 export default function Database() {
@@ -80,7 +80,7 @@ export default function Database() {
                                 (<div class="alert alert-warning alert-dismissible fade show" role="alert">
                                     {deleteUser}
                                 </div>) : " "}
-                            
+
                             <div className="col-12 d-flex justify-content-center align-items-center">
                                 <table className="table  table-hover">
                                     <thead>
@@ -100,8 +100,8 @@ export default function Database() {
                                         ) : (user.map((element) => {
 
                                             return (
-                                                <tr>
-                                                    <th >{element._id}</th>
+                                                <tr className="">
+                                                    <th>{<img src={`http://localhost:8081/Images/` + element.file} alt="none" style={{ borderRadius: "50%", width: "50px", height: "50px" }} className="rounded-profile" />}</th>
                                                     <td>{element.name}</td>
                                                     <td>{element.email}</td>
                                                     <td>{element.address}</td>
@@ -126,42 +126,7 @@ export default function Database() {
             </section>
 
 
-            {/* <section class="intro">
-                        <div class="gradient-custom-1 h-100">
-                            <div class="mask d-flex align-items-center h-100">
-                                <div class="container">
-                                    <div class="row justify-content-center">
-                                        <div class="col-12">
-                                            <div class="table-responsive bg-white">
-                                                <table class="table mb-0">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">EMPLOYEES</th>
-                                                            <th scope="col">POSITION</th>
-                                                            <th scope="col">CONTACTS</th>
-                                                            <th scope="col">AGE</th>
-                                                            <th scope="col">ADDRESS</th>
-                                                            <th scope="col">SALARY</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row" style={{ color: "#666666;" }}>Tiger Nixon</th>
-                                                            <td>System Architect</td>
-                                                            <td>tnixon12@example.com</td>
-                                                            <td>61</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>$320,800</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section> */}
+
 
         </>
     )

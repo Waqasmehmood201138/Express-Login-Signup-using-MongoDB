@@ -1,8 +1,47 @@
 import express from "express";
 const userRoute = express.Router();
 import User from "../models/User.mjs"
+import multer from "multer";
+import path from "path";
 
 
+
+const storage = multer.diskStorage({
+    destination : (req , file , cb) => {
+
+        cb(null , 'public/Images')
+    } , 
+    filename : (req , file , cb) => {
+        cb(null , file.fieldname + "_" + Date.now() + path.extname(file.originalname))
+    }
+})
+
+const upload = multer({
+    storage : storage
+})
+
+
+userRoute.post("/",upload.single('file'), async (req, res) => {
+    try {
+        const userSave = await User.create({
+
+            name: req.body.name,
+            email: req.body.email,
+            age: req.body.age,
+            password: req.body.password,
+            address: req.body.address,
+            file : req.file.filename,
+        })
+
+        res.send(userSave.name)
+        // console.log(userSave)
+        console.log(req.file)
+    }
+    catch (err) {
+        console.log(err)
+    }
+
+})
 
 userRoute.get("/", async (req, res) => {
 
@@ -13,26 +52,6 @@ userRoute.get("/", async (req, res) => {
     } catch (err) {
         console.log(err)
     }
-})
-
-userRoute.post("/", async (req, res) => {
-    try {
-        const userSave = await User.create({
-
-            name: req.body.name,
-            email: req.body.email,
-            age: req.body.age,
-            password: req.body.password,
-            address: req.body.address
-        })
-
-        res.send(userSave.name)
-        // console.log(userSave)
-    }
-    catch (err) {
-        console.log(err)
-    }
-
 })
 
 userRoute.post('/login', async (req, res) => {
